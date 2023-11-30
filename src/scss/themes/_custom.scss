@@ -105,8 +105,8 @@
 
       .status-switch {
         position: relative;
-        width: 80px;
-        height: 40px;
+        width: 40.615px;
+        height: 24px;
         -webkit-appearance: none;
         appearance: none;
         background: red;
@@ -117,13 +117,13 @@
 
         &::before {
           content: "";
-          width: 40px;
-          height: 40px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
           background: #fff;
           position: absolute;
-          top: 0;
-          left: 0;
+          top: 2px;
+          left: 0px;
           transition: 0.5s;
         }
 
@@ -133,7 +133,7 @@
         }
 
         &:checked {
-          background: #00ed64;
+          background: $switch-on;
         }
       }
 
