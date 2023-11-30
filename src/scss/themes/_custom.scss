@@ -102,6 +102,53 @@
     }
 
     .table {
+
+      .status-switch {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: red;
+        outline: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgb(0 0 0 / 50%);
+
+        &::before {
+          content: "";
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #fff;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: 0.5s;
+        }
+
+        &:checked::before {
+          transform: translateX(100%);
+          background: #fff;
+        }
+
+        &:checked {
+          background: #00ed64;
+        }
+      }
+
+      a {
+        color: $text-color;
+        text-decoration: underline;
+        font-weight: 600;
+      }
+
+      th {
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+
       .dropdown-toggle {
 
         &:after {
@@ -138,6 +185,9 @@
 
       td {
         color: $table-active-feilds-color;
+
+
+
       }
     }
 
@@ -338,98 +388,99 @@
     background: $light-primary;
     padding: 25px;
   }
-    .field-block {
-      margin-bottom: 20px;
 
-      .select-menu {
+  .field-block {
+    margin-bottom: 20px;
+
+    .select-menu {
+      border: 1px solid $light-secondary;
+      background: $white;
+      height: 50px;
+      position: relative;
+
+      .select-btn {
+        width: 100%;
+        height: 100%;
+        padding: 0 20px;
+      }
+
+      .options {
+        max-height: 300px;
+        width: 100%;
+        margin-top: 0;
+        left: 0;
         border: 1px solid $light-secondary;
         background: $white;
-        height: 50px;
-        position: relative;
-
-        .select-btn {
-          width: 100%;
-          height: 100%;
-          padding: 0 20px;
-       }
-
-        .options {
-          max-height: 300px;
-          width: 100%;
-          margin-top: 0;
-          left: 0;
-          border: 1px solid $light-secondary;
-          background: $white;
-          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
-          display: none;
-        }
-
-        
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+        display: none;
       }
 
-      .radio-feild {
-        display: grid;
-        row-gap: 20px;
-        column-gap: 20px;
-        grid-template-columns: repeat(6, 1fr);
 
-        label {
-          align-items: center;
-          display: flex;
-          justify-content: space-between;
-          margin: 0;
-          border: 1px solid $light-secondary;
-          background: $white;
-          height: 50px;
-          padding: 20px;
+    }
 
-
-          input {
-            width: 15px;
-            height: 15px;
-          }
-        }
-      }
-
-      .checkboxes-feild {
-        display: grid;
-        row-gap: 20px;
-        column-gap: 20px;
-        grid-template-columns: repeat(6, 1fr);
-
-        label {
-          align-items: center;
-          display: flex;
-          justify-content: space-between;
-          margin: 0;
-          border: 1px solid $light-secondary;
-          background: $white;
-          height: 50px;
-          padding: 20px;
-
-
-          input {
-            width: 20px;
-            height: 20px;
-          }
-        }
-      }
+    .radio-feild {
+      display: grid;
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: repeat(6, 1fr);
 
       label {
-        color: $blackish;
-        font-size: 16px;
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      input {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
         border: 1px solid $light-secondary;
         background: $white;
         height: 50px;
         padding: 20px;
-        width: 100%;
+
+
+        input {
+          width: 15px;
+          height: 15px;
+        }
       }
     }
+
+    .checkboxes-feild {
+      display: grid;
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: repeat(6, 1fr);
+
+      label {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        border: 1px solid $light-secondary;
+        background: $white;
+        height: 50px;
+        padding: 20px;
+
+
+        input {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    label {
+      color: $blackish;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    input {
+      border: 1px solid $light-secondary;
+      background: $white;
+      height: 50px;
+      padding: 20px;
+      width: 100%;
+    }
+  }
 
 
   .form-buttons {
@@ -463,10 +514,6 @@
 }
 
 
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-}
 
 
 @keyframes fadeInUp {
