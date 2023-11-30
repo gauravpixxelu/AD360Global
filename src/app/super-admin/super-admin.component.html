@@ -55,15 +55,12 @@
               <span class="text-c-green">07/11/2023</span>
             </div>
           </div>
-          
-          <apx-chart
-          [series]="chartOptions.series!"
-          [chart]="chartOptions.chart!"
-          [dataLabels]="chartOptions.dataLabels!"
-          [plotOptions]="chartOptions.plotOptions!"
-          [xaxis]="chartOptions.xaxis!"
-        ></apx-chart>
-        <i class="feather icon-help-circle" ngbTooltip="The total budget of AD 360 Global till last day is 835.64k"></i>
+
+          <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!"
+            [dataLabels]="chartOptions.dataLabels!" [plotOptions]="chartOptions.plotOptions!"
+            [xaxis]="chartOptions.xaxis!"></apx-chart>
+          <i class="feather icon-help-circle"
+            ngbTooltip="The total budget of AD 360 Global till last day is 835.64k"></i>
         </app-card>
 
       </div>
@@ -72,14 +69,59 @@
 
   <div class="col-xl-12">
     <app-card cardTitle="Basic Table" [options]="false" blockClass="table-border-style" [className]="'table-block'">
+
       <div class="d-flex flex-wrap gap-3 table-upper-bar">
-        <button class="custom-btn" (click)="createAdmin()">Create Admin <i class="feather icon-plus"></i></button>
+        <button class="custom-btn" (click)="openVerticallyCentered(content)">
+          Create Admin <i class="feather icon-plus"></i>
+        </button>
+        <ng-template #content let-modal>
+          <button type="button" class="btn-close" aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"></button>
+          <div class="row">
+            
+            <div class="col-xl-6 col-md-6">     
+                <h4 class="modal-title">Create Admin</h4>
+              <div class="form-group">
+                <label for="advertiserBid">Account Name</label>
+                <input type="text" class="form-control" id="advertiserBid">
+              </div>
+              <div class="form-group">
+                <label for="addMarkup">Domain Name</label>
+                <input type="text" class="form-control" id="addMarkup">
+              </div>
+              <div class="form-group">
+                <label for="adminBid">Currency</label>
+                <input type="number" class="form-control" id="adminBid">
+              </div>
+              <div class="form-group">
+                <label for="adminBid">Contact Person</label>
+                <input type="text" class="form-control" id="adminBid">
+              </div>
+              <div class="form-group">
+                <label for="adminBid">Enter Email</label>
+                <input type="email" class="form-control" id="adminBid">
+              </div>
+              <div class="form-group">
+                <label for="adminBid">Inital Budget</label>
+                <input type="number" class="form-control" id="adminBid">
+              </div>
+              <button type="button" class="btn btn-secondary">Create Admin</button>
+            </div>
+
+            <div class="col-xl-6 col-md-6">
+              <img src="assets/images/super-admin/admin-creation.jpg" alt="">
+            </div>
+          </div>
+        </ng-template>
         <div class="input-group date-picker">
-          <input class="form-control" placeholder="{{ formatDate(model) }}" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl"/>
-          <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i class="feather icon-chevron-down"></i></button>
+          <input class="form-control" placeholder="{{ formatDate(model) }}" name="dp" [(ngModel)]="model" ngbDatepicker
+            #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl" />
+          <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i
+              class="feather icon-chevron-down"></i></button>
         </div>
-        <button class="white-btn">Filter <i class="feather icon-filter"></i></button>        
+        <button class="white-btn">Filter <i class="feather icon-filter"></i></button>
       </div>
+
       <div class="table-responsive">
         <table class="table">
           <thead>
@@ -94,7 +136,7 @@
               <th>Budget Allocated</th>
               <th>Spent</th>
               <th>Status</th>
-              <th>Action</th>              
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -115,7 +157,7 @@
                       <span class="option-text">{{ currency.viewValue }}</span>
                     </div>
                   </div>
-                </div>                
+                </div>
               </td>
               <td>Devesh Shetty</td>
               <td>zippy@behancellc.com</td>
@@ -172,7 +214,7 @@
                   </div>
                 </div>
               </td>
-              
+
             </tr>
             <tr [class.field]="checkboxStates[1]">
               <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[1]">
@@ -491,7 +533,9 @@
             </tr>
           </tbody>
         </table>
+      
       </div>
+
     </app-card>
 
   </div>

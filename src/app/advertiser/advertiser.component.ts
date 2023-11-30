@@ -1,5 +1,5 @@
 // angular import
-import { Component, ViewChild, inject, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, inject, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';

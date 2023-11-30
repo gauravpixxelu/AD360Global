@@ -1,7 +1,8 @@
 // angular import
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
@@ -58,6 +59,7 @@ export default class SuperAdminComponent {
   isSwitchOn = false; 
   model: NgbDateStruct = { year: 2023, month: 11, day: 17 }; 
   placement = 'bottom';
+  private modalService = inject(NgbModal);
   checkboxStates: boolean[] = [false, false, false, false, false, false, false];
   @ViewChild('chart') chart!: ChartComponent;
   chartOptions!: Partial<ChartOptions>;
@@ -66,6 +68,10 @@ export default class SuperAdminComponent {
   chartOptions_3!: Partial<ChartOptions>;
   selectedValue: string = '';
   optionMenuActive: boolean = false;
+
+  openVerticallyCentered(content: TemplateRef<any>) {
+		this.modalService.open(content, { centered: true });
+	}
   
   currencies: Currency[] = [
     { value: 'usd', viewValue: '$' },
