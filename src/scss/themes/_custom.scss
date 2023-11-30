@@ -1,0 +1,493 @@
+.btn-page .btn {
+  margin-right: 8px;
+}
+
+.tab-card {
+  .nav-tabs {
+    margin-bottom: 1rem;
+  }
+
+  .nav-pills {
+    margin-bottom: 1rem;
+
+    .nav-item {
+      text-align: center;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.table {
+
+  td,
+  th {
+    font-family: $theme-font-family;
+  }
+}
+
+.pcoded-header {
+  .search-bar {
+    display: block;
+  }
+}
+
+.h-list-body .chat-messages .chat-menu-reply>div p,
+.pcoded-header.header-blue a.h-back-user-list {
+  color: $theme-font-color;
+}
+
+.header-chat .h-list-footer .input-group .form-control {
+  height: auto;
+}
+
+.pcoded-navbar.menu-light:not(.theme-horizontal) {
+
+  .pcoded-inner-navbar>app-nav-group>app-nav-collapse>li.active>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-collapse>li.pcoded-trigger>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-collapse>li:hover>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-item>li.active>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-item>li.pcoded-trigger>a,
+  .pcoded-inner-navbar>app-nav-group>app-nav-item>li:hover>a {
+    background: rgba(202, 202, 202, 0.3);
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: $primary-color;
+    }
+  }
+}
+
+.flex {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  text-align: center;
+  width: 100%;
+  background: $footer-bg;
+  padding: 15px 0;
+
+  p {
+    margin: 0;
+    color: $white;
+  }
+}
+
+.table-block {
+
+
+  .card-header {
+    display: none;
+  }
+
+  .card-body {
+    padding: 0;
+
+    .table-upper-bar {
+      background: #F7F8F8;
+      padding: 20px;
+    }
+
+    .table {
+      .dropdown-toggle {
+
+        &:after {
+          display: none;
+        }
+      }
+
+      .dropdown-menu {
+        padding: 0;
+
+        button {
+          margin: 0;
+          padding: 12px 15px;
+          width: 100%;
+
+
+          &:hover {
+            color: $table-active-feilds-color;
+            background: $light-blue;
+            box-shadow: 0 0 0 0 $white;
+
+            svg {
+              path {
+                fill: $table-active-feilds-color,
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .field {
+      background: $table-active-feilds-bg;
+
+      td {
+        color: $table-active-feilds-color;
+      }
+    }
+
+    tr {
+      &:last-child {
+
+        td,
+        th {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.admin-names {
+  padding: 20px 0;
+
+  h1 {
+    font-size: 20px;
+    color: $black;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 700;
+    margin: 0;
+
+    span {
+      color: $primary-color;
+      font-size: 12px;
+    }
+  }
+
+}
+
+
+.custom-btn {
+  padding: 12px 25px;
+  border-radius: 4px;
+  border: 1px solid $brown;
+  color: $brown;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+
+  i {
+    height: 24px;
+    width: 24px;
+    background: $brown;
+    color: $white;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.white-btn {
+  padding: 12px 25px;
+  border-radius: 4px;
+  border: 1px solid $white;
+  color: $black;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: $white;
+
+  i {
+    color: $black;
+    font-size: 16px;
+  }
+}
+
+.date-picker {
+  padding: 0;
+  width: auto;
+  background: $white;
+  border-radius: 4px;
+
+  input {
+    padding: 0 15px;
+    border: 0;
+    color: $black;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 0 0 0 $white !important;
+    width: 130px !important;
+  }
+
+  .datepicker-icon {
+    position: relative;
+    height: 100%;
+    right: 0;
+    border: 0;
+    border-radius: 4px;
+    background: $white;
+    font-size: 22px;
+  }
+}
+
+
+.select-menu {
+
+  .select-btn {
+    display: flex;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+
+    i {
+      font-size: 18px;
+      transition: 0.3s;
+    }
+  }
+
+  .options {
+    position: absolute;
+    overflow-y: auto;
+    max-height: 200px;
+    padding: 0;
+    margin-top: 5px;
+    border-radius: 0;
+    background: $white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation-name: fadeInDown;
+    -webkit-animation-name: fadeInDown;
+    animation-duration: 0.35s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.35s;
+    -webkit-animation-fill-mode: both;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: #ebebeb;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background: $blue;
+    }
+
+    .option {
+      display: flex;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 4px;
+      align-items: center;
+      background: #fff;
+      z-index: 0;
+
+      &:hover {
+        background: #f2f2f2;
+      }
+
+      .option-text {
+        font-size: 14px;
+        color: #333;
+      }
+    }
+  }
+
+  &.active {
+    .select-btn i {
+      transform: rotate(-180deg);
+    }
+
+    .options {
+      display: block !important;
+      opacity: 0;
+      z-index: 10;
+      animation-name: fadeInUp;
+      -webkit-animation-name: fadeInUp;
+      animation-duration: 0.4s;
+      animation-fill-mode: both;
+      -webkit-animation-duration: 0.4s;
+      -webkit-animation-fill-mode: both;
+    }
+  }
+}
+
+
+.campaign-box {
+
+  .field-box {
+    border-radius: 7px;
+    background: $light-primary;
+    padding: 25px;
+  }
+    .field-block {
+      margin-bottom: 20px;
+
+      .select-menu {
+        border: 1px solid $light-secondary;
+        background: $white;
+        height: 50px;
+        position: relative;
+
+        .select-btn {
+          width: 100%;
+          height: 100%;
+          padding: 0 20px;
+       }
+
+        .options {
+          max-height: 300px;
+          width: 100%;
+          margin-top: 0;
+          left: 0;
+          border: 1px solid $light-secondary;
+          background: $white;
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+          display: none;
+        }
+
+        
+      }
+
+      .radio-feild {
+        display: grid;
+        row-gap: 20px;
+        column-gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+
+        label {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          margin: 0;
+          border: 1px solid $light-secondary;
+          background: $white;
+          height: 50px;
+          padding: 20px;
+
+
+          input {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+
+      .checkboxes-feild {
+        display: grid;
+        row-gap: 20px;
+        column-gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+
+        label {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          margin: 0;
+          border: 1px solid $light-secondary;
+          background: $white;
+          height: 50px;
+          padding: 20px;
+
+
+          input {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      label {
+        color: $blackish;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      input {
+        border: 1px solid $light-secondary;
+        background: $white;
+        height: 50px;
+        padding: 20px;
+        width: 100%;
+      }
+    }
+
+
+  .form-buttons {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    .btn-1 {
+      color: $white;
+      background: $brown;
+    }
+
+    button {
+      padding: 14px 40px;
+      border-radius: 4px;
+      background: $light-dark;
+      border: 0;
+      font-size: 16px;
+    }
+  }
+
+  .abovefield-content {
+    padding: 30px 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 30px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+  }
+}

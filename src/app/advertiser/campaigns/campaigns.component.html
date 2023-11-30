@@ -1,0 +1,776 @@
+<div class="row">
+
+  <div class="col-xl-12 col-md-12">
+    <div class="admin-names">
+      <h1>Campaigns<span>DEC_JAN_Feb_AMG_Volvo_D</span></h1>
+    </div>
+  </div>
+
+  <div class="tab-container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item" (click)="selectTab(1)">
+        <a class="nav-link" [class.active]="selectedTab === 1">Insertion Orders</a>
+      </li>
+      <li class="nav-item" (click)="selectTab(2)">
+        <a class="nav-link" [class.active]="selectedTab === 2">Line Items</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tab-content">  
+<div class="col-xl-12" *ngIf="selectedTab === 1">
+  <div class="col-md-6 col-xl-3"  *ngFor="let card1 of card1">
+    <app-card [hidHeader]="true" cardClass="{{ card1.background }} order-card">
+      <h6>{{ card1.title }}</h6>
+      <h2><span>{{ card1.number }}</span></h2>
+    </app-card>
+  </div>  
+
+  <div class="simple-tooltip">
+    <h6>No Data<i class="feather icon-help-circle" ngbTooltip="Displaying data for 0 entities"></i></h6>
+  </div>
+
+  <div class="col-xl-12">
+    <app-card cardTitle="Basic Table" [options]="false" blockClass="table-border-style" [className]="'table-block'">
+      <div class="d-flex flex-wrap gap-3 table-upper-bar">
+        <button class="custom-btn" (click)="createNewInsertionOrder()">New Insertion Order <i class="feather icon-plus"></i></button>
+        <div class="input-group date-picker">
+          <input class="form-control" placeholder="{{ formatDate(model) }}" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl"/>
+          <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i class="feather icon-chevron-down"></i></button>
+        </div>
+        <button class="white-btn">Filter <i class="feather icon-filter"></i></button>        
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Id</th>
+              <th>Insertion Order</th>
+              <th>Budget</th>
+              <th>Impression</th>
+              <th>Clicks</th>
+              <th>Media Cost</th>
+              <th>Conv</th>
+              <th>eCPM</th>
+              <th>eCPC</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr [class.field]="checkboxStates[0]">
+              <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+              </th>
+              <td>
+                  <button type="button" id="button_play" class="btn" (click)="buttonPlayPress()">
+                    <i class="feather" [ngClass]="{'icon-play': state === 'stop' || state === 'pause', 'icon-pause': state === 'play' || state === 'resume', 'btn-success': state === 'resume'}"></i>
+                  </button>
+                  {{ buttonText }}
+              </td>
+              <td>Daily Joe Waystar Royco</td>
+              <td>3,950,0000 impr.</td>
+              <td>478156</td>
+              <td>36</td>
+              <td>₹85,124.56</td>
+              <td>11512498</td>
+              <td>₹4,847</td>
+              <td>₹6,847</td>
+              <td>
+                <div ngbDropdown class="d-inline-block" placement="left-top">
+                  <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                      class="feather icon-plus"></i></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                      View</button>
+                    <button class="dropdown-item">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                          fill="#5F6368" />
+                        <path
+                          d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                          fill="#5F6368" />
+                      </svg>
+                      Edit</button>
+                    <button class="dropdown-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Clone</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  </div>
+
+  <div class="col-xl-12" *ngIf="selectedTab === 2">
+    <div class="col-md-6 col-xl-3"  *ngFor="let card2 of card2">
+      <app-card [hidHeader]="true" cardClass="{{ card2.background }} order-card">
+        <h6>{{ card2.title }}</h6>
+        <h2><span>{{ card2.number }}</span></h2>
+      </app-card>
+    </div>  
+  
+    <div class="simple-tooltip">
+      <h6>Displaying data for 0 entities<i class="feather icon-help-circle" ngbTooltip="Quick access to edit Budget, Pacing, Bid Strategy and Frequency cap can now be founded in expanded settings columns."></i></h6>
+    </div>
+  
+    <div class="col-xl-12">
+      <app-card cardTitle="Basic Table" [options]="false" blockClass="table-border-style" [className]="'table-block'">
+        <div class="d-flex flex-wrap gap-3 table-upper-bar">
+          <button class="custom-btn" (click)="createSelectLineItems()">New Line Item <i class="feather icon-plus"></i></button>
+          <div class="input-group date-picker">
+            <input class="form-control" placeholder="{{ formatDate(model) }}" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl"/>
+            <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i class="feather icon-chevron-down"></i></button>
+          </div>
+          <button class="white-btn">Filter <i class="feather icon-filter"></i></button>        
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Insertion Order ID</th>
+                <th>Insertion Order</th>
+                <th>Budget</th>
+                <th>Impression</th>
+                <th>Clicks</th>
+                <th>Media Cost</th>
+                <th>Conv</th>
+                <th>eCPM</th>
+                <th>eCPC</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td>
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+              <tr [class.field]="checkboxStates[0]">
+                <th scope="row"><input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="checkboxStates[0]">
+                </th>
+                <td>124</td> 
+                <td>Daily Joe Waystar Royco</td>
+                <td>3,950,0000 impr.</td>
+                <td>478156</td>
+                <td>36</td>
+                <td>₹85,124.56</td>
+                <td>11512498</td>
+                <td>₹4,847</td>
+                <td>₹6,847</td>
+                <td>
+                  <div ngbDropdown class="d-inline-block" placement="left-top">
+                    <span id="dropdownBasic1" ngbDropdownToggle class="cursor-pointer"><i
+                        class="feather icon-plus"></i></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        View</button>
+                      <button class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.33791 14.4H1.43522L6.1298 13.3784C6.22124 13.3631 6.30598 13.3208 6.37302 13.2568L14.327 5.30275C14.908 4.72296 15.2322 3.93436 15.227 3.11359C15.2281 2.28644 14.905 1.49184 14.327 0.900083C13.7472 0.31904 12.9587 -0.00514373 12.1378 0.000117327C11.3118 -0.00719228 10.5195 0.327327 9.94868 0.924433L2.01896 8.8784C1.94903 8.93469 1.89805 9.01109 1.873 9.09732L0.851428 13.7919C0.82354 13.9604 0.877734 14.1321 0.997388 14.2541C1.0872 14.3457 1.2096 14.3982 1.33791 14.4ZM12.1378 0.973086C13.3066 0.972993 14.2541 1.9204 14.2542 3.08915C14.2542 3.0973 14.2541 3.10544 14.254 3.11359C14.262 3.67038 14.0423 4.20631 13.6459 4.59735L10.6541 1.58113C11.0482 1.18944 11.5821 0.970619 12.1378 0.973086ZM9.97298 2.28658L12.9648 5.27844L6.03245 12.1865L3.04059 9.21893L9.97298 2.28658ZM2.65141 10.1919L5.05948 12.6L1.97031 13.2811L2.65141 10.1919Z"
+                            fill="#5F6368" />
+                          <path
+                            d="M16.7837 17.0269H0.486485C0.217798 17.0269 0 17.2447 0 17.5133C0 17.782 0.217798 17.9998 0.486485 17.9998H16.7837C17.0524 17.9998 17.2702 17.782 17.2702 17.5133C17.2702 17.2447 17.0524 17.0269 16.7837 17.0269Z"
+                            fill="#5F6368" />
+                        </svg>
+                        Edit</button>
+                      <button class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Clone</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+    </div>
+    </div>
+</div>

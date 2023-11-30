@@ -1,0 +1,45 @@
+<div class="row">
+
+  <div class="col-xl-12 col-md-12">
+    <div class="admin-names">
+      <h1>Creatives</h1>
+    </div>
+  </div>
+
+  <div class="col-xl-12">
+    <app-card cardTitle="Basic Table" [options]="false" blockClass="table-border-style" [className]="'table-block'">
+      <div class="d-flex flex-wrap gap-3 table-upper-bar">
+        <button class="custom-btn" (click)="createCreatives()">New <i class="feather icon-plus"></i></button>
+        <div class="input-search-feild">
+          <input class="form-search" type="search" [placeholder]="'Enter a search term or select filters'">
+        </div>
+        <div class="input-group date-picker">
+          <input class="form-control" placeholder="{{ formatDate(model) }}" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl"/>
+          <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i class="feather icon-chevron-down"></i></button>
+        </div>
+        <button class="white-btn">Filter <i class="feather icon-filter"></i></button>        
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 col-xl-2" *ngFor="let card of card">
+          <app-card [hidHeader]="true">
+            <ng-container *ngIf="card.type === 'image'">
+              <img [src]="card.image" alt="">
+            </ng-container>
+            <ng-container *ngIf="card.type === 'video'">
+              <video width="100%" height="100%" controls>
+                <source [src]="card.videoUrl" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </ng-container>
+            <ng-container *ngIf="card.type === 'youtube'">
+              <iframe width="200" height="200" [src]="card.youtubeUrl" frameborder="0" allowfullscreen></iframe>
+            </ng-container>
+            <h6>{{ card.title }}</h6>
+            <p>{{ card.text }}</p>
+          </app-card>
+        </div>
+      </div>
+    </app-card>
+
+  </div>

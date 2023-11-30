@@ -1,0 +1,290 @@
+<div class="row">
+
+  <div class="col-xl-12 col-md-12">
+    <div class="admin-names">
+      <h1>New Insertion Order</h1>
+    </div>
+  </div>
+
+
+  <div class="col-xl-12 col-md-12">
+    <app-card cardTitle="New insertion order" [className]='"campaign-box"'>
+      <form [formGroup]="campaignForm">
+        <div class="field-box">
+          <div class="name-field field-block">
+            <label>Insertion order name</label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter Name" />
+          </div>
+        </div>
+
+        <div class="abovefield-content">
+          <p><i class="feather icon-settings"></i>Budget and pacing depend on both insertion order and item settings.</p>
+        </div>
+
+        <div class="field-box">
+          <div class="field-block">
+            <label>Budget </label>
+            <div class="select-menu" [ngClass]="{ 'active': optionMenuBudgetActive }">
+              <div class="select-btn" (click)="toggleOptionMenuBudget()">
+                <span class="sBtn-text">{{ selectedBudgetValue }}</span>
+                <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="options">
+                <div class="option" *ngFor="let chooseBudget of chooseBudget" (click)="selectChooseBudget(chooseBudget)">
+                  <span class="option-text">{{ chooseBudget.viewValue }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label>KPI <i class="feather icon-help-circle" ngbTooltip="This is a tooltip"></i></label>
+            <div class="select-menu" [ngClass]="{ 'active': optionMenuGoalActive }">
+              <div class="select-btn" (click)="toggleOptionMenuGoal()">
+                <span class="sBtn-text">{{ selectedGoalValue }}</span>
+                <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="options">
+
+                <div class="option" *ngFor="let chooseGoal of chooseGoal" (click)="selectChooseGoal(chooseGoal)">
+                  <span class="option-text">{{ chooseGoal.viewValue }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-block checkboxes">
+            <label>Creative type you expect to use</label>
+            <div class="checkboxes-feild">
+              <label>
+                <span>Display</span>
+                <input type="checkbox" id="name" formControlName="name" />
+              </label>
+              <label>
+                <span>Video</span>
+                <input type="checkbox" id="name" formControlName="name" />
+              </label>
+              <label>
+                <span>Audio</span>
+                <input type="checkbox" id="audioCheckbox" formControlName="audioCheckbox" />
+              </label>
+              <label>
+                <span>YouTube</span>
+                <input type="checkbox" id="name" formControlName="name" />
+              </label>
+              <label>
+                <span>Native</span>
+                <input type="checkbox" id="name" formControlName="name" />
+              </label>
+              <label>
+                <span>Push</span>
+                <input type="checkbox" id="name" formControlName="name" />
+              </label>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label>Planned spend <span>(Optional)</span></label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter Name" />
+          </div>
+
+          <div class="field-block radios">
+            <label> Frequency Cap</label>
+            <div class="radio-feild">
+              <label>
+                No limit
+                <input type="radio" id="radio" />
+              </label>
+              <label>
+                Limit frequency to
+                <input type="radio" id="radio" />
+              </label>
+            </div>
+            <i class="feather icon-alert-circle"
+              ngbTooltip="You can also set specific frequency caps on each insertion order and line item in this campaign learn more"></i>
+          </div>
+        </div>
+
+        <div class="abovefield-content">
+          <h4>Inventory Source</h4>
+          <p><i class="feather icon-settings"></i>(New insertion orders and line terms in this campaign will inherit
+            these settings.)</p>
+        </div>
+
+        <div class="field-box">
+          <div class="field-block">
+            <label>Public Inventory</label>
+            <div class="select-menu" [ngClass]="{ 'active': optionMenuPublicInventoryActive }">
+              <div class="select-btn" (click)="toggleOptionPublicInventory()">
+                <span class="sBtn-text">{{ selectedPublicInventoryValue }}</span>
+                <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="options">
+                <p>Inventory Source - Public Inventory</p>
+                <ul>
+                  <li *ngFor="let publicinventory of choosePublicInventory">
+                    <label>
+                      <input type="checkbox" [name]="publicinventory.value" [value]="publicinventory.value" />
+                      {{ publicinventory.viewValue }}
+                    </label>
+                  </li>
+                </ul>
+                <div class="form-buttons">
+                  <button type="button" (click)="saveCampaign()" class="btn-1">Save</button>
+                  <button type="button" (click)="cancel()" class="btn-2">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="abovefield-content">
+          <h4>Targeting</h4>
+          <p><i class="feather icon-settings"></i>(New insertion orders and line terms in this campaign will inherit
+            these settings.)</p>
+        </div>
+
+        <div class="field-box">
+          <div class="field-block">
+            <label>Demographics</label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter Name" />
+            <button class="btn btn-outline-primary mb-2 me-2" (click)="openDemographicsModal(demographicsModal)">
+              <i class="feather icon-edit-2"></i>
+            </button>
+            <ng-template #demographicsModal let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title">Demographics</h4>
+                <button type="button" class="btn-close" aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="advertiserBid">Gender</label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Male</span></label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Female</span></label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Unknown</span></label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="advertiserBid">Age</label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Age Range</span></label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Unknown</span></label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="advertiserBid">Parental status</label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Parent</span></label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Not a Parent</span></label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Unknown</span></label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="advertiserBid">Household income</label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Income Range</span></label>
+                      <label><input type="checkbox" id="name" formControlName="name" /><span>Unknown</span></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" (click)="saveDemographics()" class="btn-1">Apply</button>
+                <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancel</button>
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="field-block">
+            <label>Geography</label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter Name" />
+            <button class="btn btn-outline-primary mb-2 me-2" (click)="openGeographyModal(geographyModal)">
+              <i class="feather icon-edit-2"></i>
+            </button>
+            <ng-template #geographyModal let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title">Geography</h4>
+                <button type="button" class="btn-close" aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <div class="search-column">
+                  <label for="regionSearch">Search Regions:</label>
+                  <input type="text" id="regionSearch" placeholder="Type to search regions">
+                </div>
+                <div class="map-column">
+                  <iframe
+                    width="100%"
+                    height="450"
+                    style="border:0"
+                    loading="lazy"
+                    allowfullscreen
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1735916.4825731192!2d75.98254427293408!3d31.81241257765084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390453c367f901f7%3A0x7cfe04c5564b7725!2sHimachal%20Pradesh!5e0!3m2!1sen!2sin!4v1700636765143!5m2!1sen!2sin">
+                  </iframe>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" (click)="saveGeography()" class="btn-1">Apply</button>
+                <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancel</button>
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="field-block checkboxes">
+            <label>Language</label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter Name" />
+            <button class="btn btn-outline-primary mb-2 me-2" (click)="openLanguageModal(languageModal)">
+              <i class="feather icon-edit-2"></i>
+            </button>
+            <ng-template #languageModal let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title">Language</h4>
+                <button type="button" class="btn-close" aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                
+                <input type="text" [(ngModel)]="languageSearch" placeholder="Search languages">
+
+                <div *ngFor="let language of filteredLanguages">
+                  <label>
+                    <input type="checkbox" [(ngModel)]="language.selected" />
+                    {{ language.name }}
+                  </label>
+                </div>
+
+                <div class="added-lang">
+                  <p>All language are currently included</p>
+                </div>
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" (click)="saveLanguage()" class="btn-1">Apply</button>
+                <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancel</button>
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="field-block">
+            <label>Brand safety</label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter Name" />
+          </div>
+        </div>
+
+
+        <div class="form-buttons">
+          <button type="button" (click)="createCampaign()" class="btn-1">Create</button>
+          <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </app-card>
+  </div>
+
+</div>

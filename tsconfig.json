@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "target": "es2022", 
+    "module": "es2022", 
+    "lib": ["es2022", "dom"]
+  },
+  "files": [
+    "src/app/theme/layout/admin/nav-bar/nav-right/chat-msg/chat-msg.component.ts",
+    "src/app/theme/layout/admin/nav-bar/nav-right/chat-user-list/chat-user-list.component.ts",
+    "src/app/theme/layout/admin/nav-bar/nav-right/chat-user-list/friend/friend.component.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "enableIvy": false  
+  }
+}
