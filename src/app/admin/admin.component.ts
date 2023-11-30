@@ -57,8 +57,6 @@ export type ChartOptions = {
 
 export default class ADComponent {
 
-   
-  
   model: NgbDateStruct = { year: 2023, month: 11, day: 17 }; 
   placement = 'bottom';
   private modalService = inject(NgbModal);
