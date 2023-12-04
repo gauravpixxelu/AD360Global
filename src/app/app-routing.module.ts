@@ -8,7 +8,6 @@ import SuperAdminComponent from './super-admin/super-admin.component';
 import ADComponent from './admin/admin.component';
 import AdvertiserComponent from './advertiser/advertiser.component';
 
-
 const routes: Routes = [
   {
     path: '',

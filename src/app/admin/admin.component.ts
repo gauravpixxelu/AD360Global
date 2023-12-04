@@ -134,7 +134,7 @@ export default class ADComponent {
           left: 0
         }
       },
-      colors: ['#4680ff', '#2ed8b6'],
+      colors: ['#0D5F28', '#E1FBE9'],
       fill: {
         opacity: [1, 1]
       },

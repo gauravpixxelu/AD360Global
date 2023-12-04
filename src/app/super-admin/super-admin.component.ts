@@ -64,8 +64,6 @@ export default class SuperAdminComponent {
   @ViewChild('chart') chart!: ChartComponent;
   chartOptions!: Partial<ChartOptions>;
   chartOptions_1!: Partial<ChartOptions>;
-  chartOptions_2!: Partial<ChartOptions>;
-  chartOptions_3!: Partial<ChartOptions>;
   selectedValue: string = '';
   optionMenuActive: boolean = false;
 
@@ -112,7 +110,7 @@ export default class SuperAdminComponent {
       plotOptions: {
         pie: {
           donut: {
-            size: '40%'
+            size: '20%'
           }
         }
       },
@@ -132,7 +130,7 @@ export default class SuperAdminComponent {
           left: 0
         }
       },
-      colors: ['#4680ff', '#2ed8b6'],
+      colors: ['#0D5F28', '#E1FBE9'],
       fill: {
         opacity: [1, 1]
       },
@@ -152,11 +150,11 @@ export default class SuperAdminComponent {
         height: 350,
         toolbar: {
           show: false
-        }
-      },
+        },
+              },
       plotOptions: {
         bar: {
-          horizontal: false 
+          horizontal: false
         }
       },
       dataLabels: {
@@ -169,9 +167,11 @@ export default class SuperAdminComponent {
         labels: {
           show: true
         }
+      },
+      yaxis: {
+        show: false
       }
     };
-
   }
 
   formatDate(date: NgbDateStruct): string {
