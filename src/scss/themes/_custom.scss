@@ -631,3 +631,50 @@ img.popup-create-admin {
     opacity: 0;
   }
 }
+
+
+
+
+
+input#rememberMe[type=checkbox] {
+  border: 0px solid #1B75BB;
+  border-radius: 2px;
+  cursor: pointer;
+  line-height: 0;
+  outline: 0;
+  padding: 0 !important;
+  vertical-align: text-top;
+  -webkit-appearance: none;
+  opacity: 1;
+  background: #F1F3F4;
+  position: relative;
+  left: 12px;
+}
+
+input#rememberMe[type=checkbox]:hover {
+  opacity: 1;
+}
+
+input#rememberMe[type=checkbox]:checked {
+  border-radius: 2px;
+background: #1B75BB;
+  opacity: 1;
+}
+
+input#rememberMe[type=checkbox]:before {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 4px;
+  height: 10px;
+  border: solid #F1F3F4;
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}
+
+.d-inline-block.dropdown span i {
+  cursor: pointer;
+}
