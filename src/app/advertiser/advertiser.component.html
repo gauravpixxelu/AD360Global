@@ -22,7 +22,7 @@
           <input class="form-control" placeholder="{{ formatDate(model) }}" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl"/>
           <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i class="feather icon-chevron-down"></i></button>
         </div>
-        <button class="white-btn">Filter <i class="feather icon-filter"></i></button>        
+        <button class="white-btn">Filter <i class="feather icon-sliders"></i></button>        
       </div>
       <div class="table-responsive">
         <table class="table">
