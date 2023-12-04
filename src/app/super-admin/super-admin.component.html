@@ -75,41 +75,47 @@
           Create Admin <i class="feather icon-plus"></i>
         </button>
         <ng-template #content let-modal>
-          <button type="button" class="btn-close" aria-label="Close"
+          <button type="button" class="btn-close kit-butt" aria-label="Close"
                   (click)="modal.dismiss('Cross click')"></button>
-          <div class="row">
+          <div class="row uk-popup-design">
             
-            <div class="col-xl-6 col-md-6">     
+            <div class="col-xl-5 col-md-5 uk-code-shwich">     
                 <h4 class="modal-title">Create Admin</h4>
               <div class="form-group">
                 <label for="advertiserBid">Account Name</label>
                 <input type="text" class="form-control" id="advertiserBid">
+                <img src="assets/images/super-admin/user.svg" alt="" class="user-admin-popup">
               </div>
               <div class="form-group">
                 <label for="addMarkup">Domain Name</label>
                 <input type="text" class="form-control" id="addMarkup">
+                <img src="assets/images/super-admin/user.svg" alt="" class="user-admin-popup">
               </div>
               <div class="form-group">
                 <label for="adminBid">Currency</label>
                 <input type="number" class="form-control" id="adminBid">
+                <img src="assets/images/super-admin/Currency.svg" alt="" class="user-admin-popup">
               </div>
               <div class="form-group">
                 <label for="adminBid">Contact Person</label>
                 <input type="text" class="form-control" id="adminBid">
+                <img src="assets/images/super-admin/contact.svg" alt="" class="user-admin-popup">
               </div>
               <div class="form-group">
                 <label for="adminBid">Enter Email</label>
                 <input type="email" class="form-control" id="adminBid">
+                <img src="assets/images/super-admin/email.svg" alt="" class="user-admin-popup">
               </div>
               <div class="form-group">
                 <label for="adminBid">Inital Budget</label>
                 <input type="number" class="form-control" id="adminBid">
+                <img src="assets/images/super-admin/Budget.svg" alt="" class="user-admin-popup">
               </div>
-              <button type="button" class="btn btn-secondary">Create Admin</button>
+              <button type="button" class="btn btn-secondary figma-design">Create Admin</button>
             </div>
 
-            <div class="col-xl-6 col-md-6">
-              <img src="assets/images/super-admin/admin-creation.jpg" alt="">
+            <div class="col-xl-7 col-md-7">
+              <img src="assets/images/super-admin/admin-creation.jpg" alt="" class="popup-create-admin">
             </div>
           </div>
         </ng-template>
@@ -119,7 +125,7 @@
           <button #buttonEl class="datepicker-icon" (click)="d.toggle()" type="button"><i
               class="feather icon-chevron-down"></i></button>
         </div>
-        <button class="white-btn">Filter <i class="feather icon-filter"></i></button>
+        <button class="white-btn">Filter <img src="assets/images/super-admin/filter.svg" alt="" class="filter-img-tag" ></button>
       </div>
 
       <div class="table-responsive">
