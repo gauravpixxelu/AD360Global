@@ -106,6 +106,18 @@ export default class AdvertiserComponent {
     }
   ];
 
+  card2 = [
+    {
+      background: 'white',
+      title1: 'Impressions',
+      number1: '159,328,290',
+      title2: 'Clicks',
+      number2: '1,618,478',
+      title3: 'CTR',
+      number3: '1.02%',
+    }
+  ];
+
   constructor(private router: Router) {
 
   }

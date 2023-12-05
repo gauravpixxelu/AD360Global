@@ -151,7 +151,7 @@ export default class SuperAdminComponent {
         toolbar: {
           show: false
         },
-              },
+      },
       plotOptions: {
         bar: {
           horizontal: false
@@ -170,7 +170,8 @@ export default class SuperAdminComponent {
       },
       yaxis: {
         show: false
-      }
+      },
+      colors: ['#E1FBE9'], 
     };
   }
 

@@ -7,12 +7,31 @@
   </div>
 
 
-  <div class="col-md-6 col-xl-3" *ngFor="let card of cards">
+  <div class="col-md-4 col-xl-2" *ngFor="let card of cards">
     <app-card [hidHeader]="true" cardClass="{{ card.background }} order-card">
       <h6>{{ card.title }}</h6>
       <h2><span>{{ card.number }}</span></h2>
     </app-card>
   </div>
+
+  <div class="col-md-6 col-xl-6" *ngFor="let card2 of card2">
+    <app-card [hidHeader]="true" cardClass="{{ card2.background }} order-card">
+      <div class="vg-block">
+        <h6>{{ card2.title1 }}</h6>
+      <h2><span>{{ card2.number1 }}</span></h2>
+      </div>     
+      <div class="vg-block">
+        <h6>{{ card2.title2 }}</h6>
+      <h2><span>{{ card2.number2 }}</span></h2>
+      </div> 
+      <div class="vg-block">
+        <h6>{{ card2.title3 }}</h6>
+      <h2><span>{{ card2.number3 }}</span></h2>
+      </div>  
+    </app-card>
+  </div>
+
+  
 
   <div class="col-xl-12">
     <app-card cardTitle="Basic Table" [options]="false" blockClass="table-border-style" [className]="'table-block'">
