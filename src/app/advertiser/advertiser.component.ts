@@ -115,7 +115,7 @@ export default class AdvertiserComponent {
       number2: '1,618,478',
       title3: 'CTR',
       number3: '1.02%',
-    }
+    }       
   ];
 
   constructor(private router: Router) {
